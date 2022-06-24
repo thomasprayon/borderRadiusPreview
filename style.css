@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: blanchedalmond;
+    position: relative;
+}
+.container {
+    background-color: aquamarine;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    border: 5px solid black;
+}
+.input-top-left,
+.input-top-right,
+.input-bottom-left,
+.input-bottom-right {
+    position: absolute;
+    width: 3rem;
+}
+.input-top-left {
+    top: 22%;
+    left: 21%;
+}
+.input-top-right {
+    top: 22%;
+    right: 21%;
+}
+.input-bottom-left {
+    bottom: 22%;
+    left: 21%;
+}
+.input-bottom-right {
+    bottom: 22%;
+    right: 21%;
+}
