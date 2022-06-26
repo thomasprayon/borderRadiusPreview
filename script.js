@@ -3,6 +3,7 @@
 const previewBtn = document.querySelector('.btn-preview');
 const copyBtn = document.querySelector('.btn-copy');
 const resetBtn = document.querySelector('.btn-reset');
+const makeCircle = document.querySelector('.btn-circle');
 let inputTL = document.querySelector('.input-top-left');
 let inputTR = document.querySelector('.input-top-right');
 let inputBL = document.querySelector('.input-bottom-left');
@@ -34,20 +35,20 @@ const checkInputUser = (bottomLeft, bottomRight, topLeft, topRight) => {
 // Edit borders by submitting values
 const previewBorders = (bottomLeft, bottomRight, topLeft, topRight) => {
     let containerBox = document.querySelector('.container');
-    let copyText = document.getElementById('infoPreviewer');
+    let previewText = document.getElementById('infoPreviewer');
 
     if (topLeft && !topRight && !bottomRight && !bottomLeft) {
         containerBox.style.borderTopLeftRadius = `${topLeft}px`;
-        copyText.value = `border-left-top-radius: ${topLeft}px`;
+        previewText.value = `border-left-top-radius: ${topLeft}px`;
     } else if (!topLeft && topRight && !bottomRight && !bottomLeft) {
         containerBox.style.borderTopRightRadius = `${topRight}px`;
-        copyText.value = `border-top-right-radius: ${topRight}px`;
+        previewText.value = `border-top-right-radius: ${topRight}px`;
     } else if (!topLeft && !topRight && bottomRight && !bottomLeft) {
         containerBox.style.borderBottomRightRadius = `${bottomRight}px`;
-        copyText.value = `border-bottom-right-radius: ${bottomRight}px`;
+        previewText.value = `border-bottom-right-radius: ${bottomRight}px`;
     } else if (!topLeft && !topRight && !bottomRight && bottomLeft) {
         containerBox.style.borderBottomLeftRadius = `${bottomLeft}px`;
-        copyText.value = `border-bottom-left-radius: ${bottomLeft}px`;
+        previewText.value = `border-bottom-left-radius: ${bottomLeft}px`;
     } else if (topLeft && topRight && bottomRight && bottomLeft) {
         if (
             topLeft === topRight &&
@@ -55,74 +56,91 @@ const previewBorders = (bottomLeft, bottomRight, topLeft, topRight) => {
             topLeft === bottomRight
         ) {
             containerBox.style.borderRadius = `${topLeft}px`;
-            copyText.value = `border-radius: ${topLeft}px`;
+            previewText.value = `border-radius: ${topLeft}px`;
         } else if (topLeft === bottomRight && topRight === bottomLeft) {
             containerBox.style.borderRadius = `${topLeft}px ${topRight}px`;
-            copyText.value = `border-radius: ${topLeft}px ${topRight}px`;
+            previewText.value = `border-radius: ${topLeft}px ${topRight}px`;
         } else if (topRight === bottomLeft) {
             containerBox.style.borderRadius = `${topLeft}px ${topRight}px ${bottomRight}px`;
-            copyText.value = `border-radius: ${topLeft}px ${topRight}px`;
+            previewText.value = `border-radius: ${topLeft}px ${topRight}px`;
         } else {
             containerBox.style.borderRadius = `${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`;
-            copyText.value = `border-radius: ${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`;
+            previewText.value = `border-radius: ${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`;
         }
     } else if (!topLeft && topRight && bottomRight && bottomLeft) {
         containerBox.style.borderTopRightRadius = `${topRight}px`;
         containerBox.style.borderBottomRightRadius = `${bottomRight}px`;
         containerBox.style.borderBottomLeftRadius = `${bottomLeft}px`;
-        copyText.value = `border-top-right-radius: ${topRight} \nborder-bottom-right-radius: ${bottomRight}px \nborder-bottom-left-radius: ${bottomLeft}px `;
+        previewText.value = `border-top-right-radius: ${topRight} \nborder-bottom-right-radius: ${bottomRight}px \nborder-bottom-left-radius: ${bottomLeft}px `;
     } else if (topLeft && !topRight && bottomRight && bottomLeft) {
         containerBox.style.borderTopLeftRadius = `${topLeft}px`;
         containerBox.style.borderBottomRightRadius = `${bottomRight}px`;
         containerBox.style.borderBottomLeftRadius = `${bottomLeft}px`;
-        copyText.value = `border-top-left-radius: ${topLeft}px \nborder-bottom-right-radius: ${bottomRight}px \nborder-bottom-left-radius: ${bottomLeft}px`;
+        previewText.value = `border-top-left-radius: ${topLeft}px \nborder-bottom-right-radius: ${bottomRight}px \nborder-bottom-left-radius: ${bottomLeft}px`;
     } else if (topLeft && topRight && !bottomRight && topLeft) {
         containerBox.style.borderTopLeftRadius = `${topLeft}px`;
         containerBox.style.borderTopRightRadius = `${topRight}px`;
         containerBox.style.borderBottomLeftRadius = `${bottomLeft}px`;
-        copyText.value = `border-top-left-radius: ${topLeft}px \nborder-top-right-radius: ${topRight}px \nborder-bottom-left-radius: ${bottomLeft}px`;
+        previewText.value = `border-top-left-radius: ${topLeft}px \nborder-top-right-radius: ${topRight}px \nborder-bottom-left-radius: ${bottomLeft}px`;
     } else if (topLeft && topRight && bottomRight && !bottomLeft) {
         containerBox.style.borderTopLeftRadius = `${topLeft}px`;
         containerBox.style.borderTopRightRadius = `${topRight}px`;
         containerBox.style.borderBottomRightRadius = `${bottomRight}px`;
-        copyText.value = `border-top-left-radius: ${topLeft} \nborder-top-right-radius: ${topRight}px \nborder-bottom-right-radius: ${bottomRight}px`;
+        previewText.value = `border-top-left-radius: ${topLeft} \nborder-top-right-radius: ${topRight}px \nborder-bottom-right-radius: ${bottomRight}px`;
     } else if (!topLeft && topRight && bottomRight && !bottomLeft) {
         containerBox.style.borderTopRightRadius = `${topRight}px`;
         containerBox.style.borderBottomRightRadius = `${bottomRight}px`;
-        copyText.value = `border-top-right-radius: ${topRight}px \nborder-bottom-right-radius: ${bottomRight}px`;
+        previewText.value = `border-top-right-radius: ${topRight}px \nborder-bottom-right-radius: ${bottomRight}px`;
     } else if (topLeft && !topRight && bottomRight && !bottomLeft) {
         containerBox.style.borderTopLeftRadius = `${topLeft}px`;
         containerBox.style.borderBottomRightRadius = `${bottomRight}px`;
-        copyText.value = `border-top-left-radius:${topLeft}px \nborder-radius-bottom-right:${bottomRight}`;
+        previewText.value = `border-top-left-radius:${topLeft}px \nborder-radius-bottom-right:${bottomRight}`;
     } else if (topLeft && topRight && !bottomRight && !bottomLeft) {
         containerBox.style.borderTopLeftRadius = `${topLeft}px`;
         containerBox.style.borderTopRightRadius = `${topRight}px`;
-        copyText.value = `border-top-left-radius: ${topLeft}px \nborder-radius-top-radius: ${topRight}`;
+        previewText.value = `border-top-left-radius: ${topLeft}px \nborder-radius-top-radius: ${topRight}`;
     } else if (topLeft && !topRight && !bottomRight && bottomLeft) {
         containerBox.style.borderTopLeftRadius = `${topLeft}px`;
-        containerBox.style.borderBottomLeftRadius`${bottomLeft}px`;
-        copyText.value = `border-top-left-radius: ${topLeft}px \nborder-radius-bottom-left: ${bottomLeft}`;
+        containerBox.style.borderBottomLeftRadius = `${bottomLeft}px`;
+        previewText.value = `border-top-left-radius: ${topLeft}px \nborder-radius-bottom-left: ${bottomLeft}px`;
     } else {
-        copyText.value = 'Something went wrong! ';
+        previewText.value = 'Something went wrong!';
     }
 };
 
 // Copy text to clipboard
-const copyToClipboard = () => {};
-// Resetear el rectangulo
-// const resetValues = () => {};
+const copyToClipboard = () => {
+    let copyText = document.getElementById('infoPreviewer');
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+};
+
 //Buttons Functinality
 previewBtn.addEventListener('click', () => {
     checkInputUser(inputTL, inputTR, inputBL, inputBR);
 });
 
+//Reset button
 resetBtn.addEventListener('click', () => {
     let containerBox = document.querySelector('.container');
-    let copyText = document.getElementById('infoPreviewer');
+    let previewText = document.getElementById('infoPreviewer');
     inputBL.value = '';
     inputBR.value = '';
     inputTL.value = '';
     inputTR.value = '';
     containerBox.style.borderRadius = '0px';
-    copyText.value = '';
+    previewText.value = '';
+});
+
+//CopyButton
+copyBtn.addEventListener('click', copyToClipboard);
+
+//Make a circle
+makeCircle.addEventListener('click', () => {
+    console.log('makeCircle');
+    let containerBox = document.querySelector('.container');
+    let previewText = document.getElementById('infoPreviewer');
+    containerBox.style.borderRadius = `100%`;
+    previewText.value = `border-radius: 100%`;
 });
