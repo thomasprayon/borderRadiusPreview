@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@200&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,8 +7,10 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-color: blanchedalmond;
+    background-color: #003559;
     position: relative;
+    color: aliceblue;
+    font-family: 'Poppins', sans-serif;
 }
 main {
     display: flex;
@@ -16,7 +19,7 @@ main {
     align-items: center;
 }
 .container {
-    background-color: aquamarine;
+    background-color: #0353a4;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -29,6 +32,11 @@ main {
     justify-content: center;
     align-items: center;
 }
+h1 {
+    margin-top: 4rem;
+    font-size: 42px;
+    letter-spacing: 5px;
+}
 .input-top-left,
 .input-top-right,
 .input-bottom-left,
@@ -38,34 +46,55 @@ main {
     height: 2rem;
     font-size: 20px;
     text-align: center;
+    background-color: #061a40;
+    outline: 0;
+    border: 0;
+    color: aliceblue;
 }
 .input-top-left {
-    top: 21%;
-    left: 21%;
+    top: 20%;
+    left: 20%;
 }
 .input-top-right {
-    top: 21%;
-    right: 21%;
+    top: 20%;
+    right: 20%;
 }
 .input-bottom-left {
-    bottom: 21%;
-    left: 21%;
+    bottom: 20%;
+    left: 20%;
 }
 .input-bottom-right {
-    bottom: 21%;
-    right: 21%;
+    bottom: 20%;
+    right: 20%;
 }
 .buttons {
     position: absolute;
-    bottom: 15%;
+    bottom: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 #infoPreviewer {
-    background-color: black;
+    background-color: #061a40;
     color: white;
     width: 400px;
     height: 200px;
     font-size: 22px;
     font-family: inherit;
+    pointer-events: none;
+}
+.btn {
+    background-color: #b9d6f2;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin: 0 10px 0 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.btn:hover {
+    opacity: 0.89;
+}
+.btn:active {
+    transform: translateY(2px);
 }
